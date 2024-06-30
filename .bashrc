@@ -57,21 +57,11 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "\[\033[01;36m\] (%s)\[\033[00m\]")\n$ '
+	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "\[\033[01;36m\] (%s)\[\033[00m\]")\n$ '
 
 else
 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\n$ '
 fi
-
-
-# if [ "$color_prompt" = yes ]; then
-# 	PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "\[\033[01;36m\] (%s)\[\033[00m\]")\[\033[01;35m\]${VICMD}\[\033[00m\]\n$ '
-# else
-# 	PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\[\033[01;35m\]${VICMD}\[\033[00m\]\n$ '
-# fi
-
-# # Add this line to dynamically show vi command mode (VICMD) or insert mode (usually empty)
-# PROMPT_COMMAND='if [[ -n $BASH_VERSION && $- == *i* && $BASH_COMMAND ]]; then printf "\033[1A\033[K\033[1;35m%s\033[0m\n" "$(set -o | grep "vi " | awk '"'"'{print $4}'"'"')"; fi'
 
 unset color_prompt force_color_prompt
 
@@ -153,10 +143,6 @@ clsall() {
 }
 
 set -o vi
-
-set show-mode-in-prompt on
-set vi-ins-mode-string "custom-ins"
-set vi-cmd-mode-string "custom-cmd"
 
 export CWPROOT='/home/carburauto/SeismicUnix'
 export PATH="${PATH}:${CWPROOT}/bin"
