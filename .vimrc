@@ -35,5 +35,3 @@ Plug 'http://github.com/tpope/vim-surround'
 Plug 'https://github.com/tpope/vim-commentary'
 
 call plug#end()
-
-nnoremap <esc> :noh<CR>
