@@ -33,5 +33,6 @@ call plug#begin()
 
 Plug 'http://github.com/tpope/vim-surround'
 Plug 'https://github.com/tpope/vim-commentary'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
