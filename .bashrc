@@ -10,7 +10,7 @@ esac
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
-HISTCONTROL=ignoreboth
+HISTCONTROL=ignoredups
 
 # append to the history file, don't overwrite it
 shopt -s histappend
@@ -97,10 +97,13 @@ alias l='ls -CF'
 alias py='python3.11'
 alias mk='make'
 alias nv='nvim'
-alias cls='clear'
-alias ..='cd ..'
 alias tm='tmux'
+
+alias cls='clear'
 alias ext='exit'
+alias ..='cd ..'
+alias ...='cd ../..'
+
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -142,9 +145,49 @@ clsall() {
 	fi
 }
 
+headclip() {
+	local lines=1
+	if [ $# -ge 2 ]; then
+		lines=$1
+		shift
+	fi
+    output=$(head -n "$lines" "$1")
+	echo "$output" | xclip -selection clipboard
+	echo "$output copied!"
+}
+
 set -o vi
 
 export CWPROOT='/home/carburauto/SeismicUnix'
 export PATH="${PATH}:${CWPROOT}/bin"
 export CWPROOT='/home/carburauto/SeismicUnix'
 export PATH="${PATH}:${CWPROOT}/bin"
+export PATH="~/anaconda3/bin:${PATH}"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/carburauto/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/carburauto/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/carburauto/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/carburauto/anaconda3/bin:$PATH"
+    fi
+fi
+
+unset __conda_setup
+# <<< conda initialize <<<
+
+export PATH="$PATH:/opt/nvim-linux64/bin"
+
+blk='\[\033[01;30m\]'   # Black
+red='\[\033[01;31m\]'   # Red
+grn='\[\033[01;32m\]'   # Green
+ylw='\[\033[01;33m\]'   # Yellow
+blu='\[\033[01;34m\]'   # Blue
+pur='\[\033[01;35m\]'   # Purple
+cyn='\[\033[01;36m\]'   # Cyan
+wht='\[\033[01;37m\]'   # White
+clr='\[\033[00m\]'      # Reset
