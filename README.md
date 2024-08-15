@@ -1,2 +1,2 @@
-# dotfiles
-Store important dotfiles
+# Configuration Files
+Store important config programs files
