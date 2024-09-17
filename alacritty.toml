@@ -1,0 +1,52 @@
+# .config/alacritty
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" },
+]
+
+[colors.bright]
+black = "0x282828"       # Dark Gray
+blue = "0x80a0ff"        # Neon Blue
+cyan = "0x8cf3f2"        # Neon Cyan
+green = "0x9cffb0"       # Pastel Green
+magenta = "0xff92df"     # Neon Pink
+red = "0xff6f6b"         # Bright Red
+white = "0xe0e0e0"       # Light Gray
+yellow = "0xffe08a"      # Soft Yellow
+
+[colors.normal]
+black = "0x1a1a1a"       # Deep Dark Gray
+blue = "0x6c7dff"        # Soft Neon Blue
+cyan = "0x70e0e0"        # Soft Cyan
+green = "0x8cffab"       # Light Green
+magenta = "0xff85c5"     # Soft Pink
+red = "0xff5555"         # Vivid Red
+white = "0xb2b2b2"       # Medium Gray
+yellow = "0xffc978"      # Light Yellow
+
+[colors.primary]
+# background = "0x212027"  # Dark Slate Gray
+background = "0x171421"  # Dark Slate Gray
+foreground = "0xF6E4CD"  # Soft Cream
+
+[font]
+size = 16
+
+[font.bold]
+family = "GohuFont 11 Nerd Font Mono"
+style = "Regular"
+
+[font.italic]
+family = "GohuFont 11 Nerd Font Mono"
+style = "Regular"
+
+[font.normal]
+family = "GohuFont 11 Nerd Font Mono"
+style = "Regular"
+
+[mouse]
+hide_when_typing = true
+
+[window]
+opacity = 0.95
