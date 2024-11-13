@@ -5,6 +5,9 @@ bindings = [
 { key = "F11", action = "ToggleFullscreen" },
 ]
 
+[cursor]
+style = { shape = "Block", blinking = "on" }
+
 [colors.bright]
 black = "0x282828"       # Dark Gray
 blue = "0x80a0ff"        # Neon Blue
@@ -26,23 +29,22 @@ white = "0xb2b2b2"       # Medium Gray
 yellow = "0xffc978"      # Light Yellow
 
 [colors.primary]
-# background = "0x212027"  # Dark Slate Gray
-background = "0x171421"  # Dark Slate Gray
+background = "0x140D20"
 foreground = "0xF6E4CD"  # Soft Cream
 
 [font]
-size = 16
+size = 17
 
 [font.bold]
-family = "GohuFont 11 Nerd Font Mono"
-style = "Regular"
+family = "GohuFont 14 Nerd Font Mono"
+style = "Bold"
 
 [font.italic]
-family = "GohuFont 11 Nerd Font Mono"
-style = "Regular"
+family = "GohuFont 14 Nerd Font Mono"
+style = "Italic"
 
 [font.normal]
-family = "GohuFont 11 Nerd Font Mono"
+family = "GohuFont 14 Nerd Font Mono"
 style = "Regular"
 
 [mouse]
