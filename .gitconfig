@@ -6,6 +6,22 @@
 	st = status -s
 	cm = commit -m
 	ps = push
+	ck = checkout
+	bc = branch
+	lgg = log --oneline --graph --all --decorate
+	lgb = log --oneline --branches --not --remotes
+
+[color]
+	ui = auto
+
+[push]
+	default = current
+
+[help]
+    autocorrect = 1
+
+[pull]
+	rebase = true
 
 [core]
 	editor = nvim
