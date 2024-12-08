@@ -59,19 +59,27 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
 alias py='python3.11'
 alias mk='make'
 alias nv='nvim'
 alias tm='tmux'
 alias tml='tmux ls'
-alias tmk='tmux kill-server'
+alias tmk='tmux kill-session -t'
+alias tmks='tmux kill-server'
 alias tmn='tmux new -s'
+alias tma='tmux attach -t'
+alias dk='docker'
+alias dkps='docker ps'
 alias cls='clear'
 alias ext='exit'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias quartus='./intelFPGA_lite/23.1std/quartus/bin/quartus'
+alias pnv='pipenv'
+alias pnvs='pipenv shell'
+alias pnvr='pipenv run'
+alias quartus='~/./intelFPGA_lite/23.1std/quartus/bin/quartus'
 
 # Alert for long-running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -90,11 +98,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Ignore EOF shortcut to exit the terminal
 export IGNOREEOF=5
 
 # Custom functions
-
 copycmd() {
     if [ -z "$1" ]; then
         history -p !! | xclip -selection clipboard
@@ -126,6 +132,7 @@ headclip() {
 
 # Set bash to use vi mode for command editing
 set -o vi
+bind -s 'set completion-ignore-case on'
 
 # Add paths for custom binaries
 export CWPROOT='/home/carburauto/SeismicUnix'
@@ -158,3 +165,7 @@ wht='\[\033[01;37m\]'   # White
 clr='\[\033[00m\]'      # Reset
 
 export QSYS_ROOTDIR="/home/carburauto/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"
+export CWPROOT='/home/carburauto/SeismicUnix'
+export PATH="${PATH}:${CWPROOT}/bin"
+export CWPROOT='/home/carburauto/SeismicUnix'
+export PATH="${PATH}:${CWPROOT}/bin"
