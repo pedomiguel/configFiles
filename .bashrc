@@ -58,10 +58,14 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias rm='trash-put'
 
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+alias sizebytes='stat --format="%s bytes"'
+alias findstr='find . -type f -exec grep -l'
 
 alias py='python3.11'
 alias mk='make'
@@ -72,13 +76,14 @@ alias tmk='tmux kill-session -t'
 alias tmks='tmux kill-server'
 alias tmn='tmux new -s'
 alias tma='tmux attach -t'
+alias tms='tmux source-file ~/.tmux.conf'
 alias dk='docker'
 alias dkps='docker ps'
 alias cls='clear'
 alias ext='exit'
-alias pnv='pipenv'
-alias pnvs='pipenv shell'
-alias pnvr='pipenv run'
+alias pe='pipenv'
+alias pes='pipenv shell'
+alias per='pipenv run'
 alias quartus='~/./intelFPGA_lite/23.1std/quartus/bin/quartus'
 
 # Alert for long-running commands
