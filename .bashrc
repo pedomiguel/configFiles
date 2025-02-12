@@ -23,27 +23,30 @@ fi
 
 # Fancy prompt with Git branch support
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+    xterm-color|*-256color|xterm-kitty) color_prompt=yes;;
 esac
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
         color_prompt=yes
     else
-        color_prompt=
+        color_prompt=yes
     fi
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\]$(__git_ps1 "\[\033[01;33m\] (%s)\[\033[00m\]")\n$ '
+    PS1='${debian_chroot:+\[\033[32m\](\debian_chroot)\[\033[00m\]}'
+    PS1+='\[\033[92m\]\u@\h\[\033[00m\]:'
+    PS1+='\[\033[01;34m\]\w\[\033[00m\]'
+    PS1+='$(__git_ps1 " \[\033[33m\](%s)\[\033[00m\]")\n› '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\n$ '
+    PS1='${debian_chroot:+(\debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\n› '
 fi
 
 # Xterm title
 case "$TERM" in
     xterm*|rxvt*)
-        PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+        PS1="\[\e]0;${debian_chroot:+(\$debian_chroot)}\u@\h: \w\a\]$PS1"
         ;;
 esac
 
@@ -75,7 +78,7 @@ alias tml='tmux ls'
 alias tmk='tmux kill-session -t'
 alias tmks='tmux kill-server'
 alias tmn='tmux new -s'
-alias tma='tmux attach -t'
+alias tma='tmux attach'
 alias tms='tmux source-file ~/.tmux.conf'
 alias dk='docker'
 alias dkps='docker ps'
@@ -114,7 +117,8 @@ copycmd() {
     fi
 }
 
-clsall() {
+# Functions
+clsall() { # Function to clear all the scrollback buffer
     read -p "Are you sure you want to clear the terminal and scrollback buffer? (Y/n) " -n 1 -r
     echo
     if [[ $REPLY =~ ^[Nn]$ ]]; then
@@ -124,7 +128,7 @@ clsall() {
     fi
 }
 
-headclip() {
+headclip() { # Functin to copy the first n lines of a file
     local lines=1
     if [ $# -ge 2 ]; then
         lines=$1
@@ -135,9 +139,8 @@ headclip() {
     echo "$output copied!"
 }
 
-# Set bash to use vi mode for command editing
-set -o vi
-bind -s 'set completion-ignore-case on'
+set -o vi # Set bash to use vi mode for command editing
+bind -s 'set completion-ignore-case on' # Ignore sensitive case on completion
 
 # Add paths for custom binaries
 export CWPROOT='/home/carburauto/SeismicUnix'
@@ -169,8 +172,11 @@ cyn='\[\033[01;36m\]'   # Cyan
 wht='\[\033[01;37m\]'   # White
 clr='\[\033[00m\]'      # Reset
 
+force_color_prompt=yes
+
 export QSYS_ROOTDIR="/home/carburauto/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"
 export CWPROOT='/home/carburauto/SeismicUnix'
 export PATH="${PATH}:${CWPROOT}/bin"
 export CWPROOT='/home/carburauto/SeismicUnix'
 export PATH="${PATH}:${CWPROOT}/bin"
+

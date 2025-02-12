@@ -35,6 +35,10 @@ set wildignore=*.docx,*.jpg,*.png,*.gif,*.pdf,*.pyc,*.exe,*.flv,*.img,*.xlsx
 
 set completeopt=menu,menuone,noinsert
 
+let &t_SI = "\e[2 q"  " Insert mode - Block
+let &t_SR = "\e[2 q"  " Replace mode - Block
+let &t_EI = "\e[2 q"  " Normal mode - Block
+
 " Mappings
 inoremap <C-@> <C-N>
 " @ is the space-key
