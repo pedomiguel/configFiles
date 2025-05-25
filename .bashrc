@@ -60,8 +60,11 @@ fi
 # Aliases
 alias ll='ls -alF'
 alias la='ls -A'
+alias lm='ls --almost-all'
 alias l='ls -CF'
-alias rm='trash-put'
+alias rm='trash-put' # Safe rm
+alias cls='clear'
+alias ext='exit'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -70,9 +73,11 @@ alias ....='cd ../../..'
 alias sizebytes='stat --format="%s bytes"'
 alias findstr='find . -type f -exec grep -l'
 
+# Core programs aliases
 alias py='python3.11'
 alias mk='make'
 alias nv='nvim'
+# Tmux
 alias tm='tmux'
 alias tml='tmux ls'
 alias tmk='tmux kill-session -t'
@@ -80,14 +85,11 @@ alias tmks='tmux kill-server'
 alias tmn='tmux new -s'
 alias tma='tmux attach'
 alias tms='tmux source-file ~/.tmux.conf'
+# Docker
 alias dk='docker'
-alias dkps='docker ps'
-alias cls='clear'
-alias ext='exit'
-alias pe='pipenv'
-alias pes='pipenv shell'
-alias per='pipenv run'
-alias quartus='~/./intelFPGA_lite/23.1std/quartus/bin/quartus'
+alias dkps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
+alias dkl='docker logs --tail=100'
+alias dkc='docker compose'
 
 # Alert for long-running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -143,23 +145,14 @@ set -o vi # Set bash to use vi mode for command editing
 bind -s 'set completion-ignore-case on' # Ignore sensitive case on completion
 
 # Add paths for custom binaries
-export CWPROOT='/home/carburauto/SeismicUnix'
-export PATH="${PATH}:${CWPROOT}/bin"
-export PATH="~/anaconda3/bin:${PATH}"
+export CWPROOT="$HOME/SeismicUnix"
+export PATH="$PATH:$CWPROOT/bin"
 export PATH="$PATH:/opt/nvim-linux64/bin"
+export PATH="$HOME/miniconda3/bin:$PATH"
+export LD_LIBRARY_PATH=$HOME/systemc-install/lib:$LD_LIBRARY_PATH
 
-# Conda initialization
-__conda_setup="$('/home/carburauto/anaconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/carburauto/anaconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/carburauto/anaconda3/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/carburauto/anaconda3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
+# Disable automatic Conda initialization, but allow manual activation
+export CONDA_AUTO_ACTIVATE_BASE=false
 
 # Custom colors for the terminal prompt
 blk='\[\033[01;30m\]'   # Black
@@ -179,4 +172,20 @@ export CWPROOT='/home/carburauto/SeismicUnix'
 export PATH="${PATH}:${CWPROOT}/bin"
 export CWPROOT='/home/carburauto/SeismicUnix'
 export PATH="${PATH}:${CWPROOT}/bin"
+
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/carburauto/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/carburauto/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/carburauto/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/carburauto/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
 
