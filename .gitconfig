@@ -8,6 +8,9 @@
 	ps = push
 	ck = checkout
 	bc = branch
+	df = diff --output-indicator-new=' ' --output-indicator-old=' '
+	cl = clone
+	pl = pull
 	lgg = log --oneline --graph --all --decorate
 	lgb = log --oneline --branches --not --remotes
 
@@ -15,6 +18,8 @@
 	ui = auto
 
 [push]
+	autoSetupRemote = true
+	followTags = true
 	default = current
 
 [help]
@@ -23,5 +28,36 @@
 [pull]
 	rebase = true
 
+[rebase]
+	autoStash = true
+	missingCommitsCheck = warn
+
 [core]
 	editor = nvim
+	compression = 9
+	whitespace = error
+	preloadindex = true
+
+[advice]
+	addEmptyPathspec = false
+	pushNonFastForward = false
+	statusHints = false
+
+[init]
+	defaultBranch = main
+
+[status]
+	branch = true
+	showStatus = true
+	showUntrackedFiles = all
+
+[diff]
+	context = 3
+	renames = copies
+	interHunkContext = 10
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
