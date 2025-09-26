@@ -34,13 +34,13 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+\[\033[32m\](\debian_chroot)\[\033[00m\]}'
-    PS1+='\[\033[92m\]\u@\h\[\033[00m\]:'
-    PS1+='\[\033[01;34m\]\w\[\033[00m\]'
-    PS1+='$(__git_ps1 " \[\033[33m\](%s)\[\033[00m\]")\n› '
-else
-    PS1='${debian_chroot:+(\debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\n› '
+if [ "$color_prompt" = yes ]; then 
+	PS1='${debian_chroot:+\[\033[32m\](\debian_chroot)\[\033[00m\]}' 
+	PS1+='\[\033[92m\]\u@\h\[\033[00m\]:'
+	PS1+='\[\033[01;34m\]\w\[\033[00m\]'
+	PS1+='$(__git_ps1 " \[\033[33m\](%s)\[\033[00m\]")\n$ '
+else 
+	PS1='${debian_chroot:+(\debian_chroot)}\u@\h:\w$(__git_ps1 " (%s)")\n$ '
 fi
 
 # Xterm title
@@ -63,18 +63,15 @@ alias la='ls -A'
 alias lm='ls --almost-all'
 alias l='ls -CF'
 alias rm='trash-put' # Safe rm
-alias cls='clear'
+alias cls='tput reset'
 alias ext='exit'
-
+alias scb='source ~/.bashrc'
+alias scv='source .venv/bin/activate' # source python enviroment
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-
-alias sizebytes='stat --format="%s bytes"'
-alias findstr='find . -type f -exec grep -l'
-
 # Core programs aliases
-alias py='python3.11'
+alias py='python3'
 alias mk='make'
 alias nv='nvim'
 # Tmux
@@ -83,14 +80,15 @@ alias tml='tmux ls'
 alias tmk='tmux kill-session -t'
 alias tmks='tmux kill-server'
 alias tmn='tmux new -s'
+alias tmc='tmux new-session -s tmp -c'
 alias tma='tmux attach'
-alias tms='tmux source-file ~/.tmux.conf'
 # Docker
 alias dk='docker'
 alias dkps='docker ps --format "table {{.Names}}\t{{.Status}}\t{{.Ports}}"'
 alias dkl='docker logs --tail=100'
-alias dkc='docker compose'
-
+alias dkc='docker-compose'
+# Git
+alias gt='git'
 # Alert for long-running commands
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
@@ -145,34 +143,27 @@ set -o vi # Set bash to use vi mode for command editing
 bind -s 'set completion-ignore-case on' # Ignore sensitive case on completion
 
 # Add paths for custom binaries
-export CWPROOT="$HOME/SeismicUnix"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 export PATH="$PATH:$CWPROOT/bin"
 export PATH="$PATH:/opt/nvim-linux64/bin"
-export PATH="$HOME/miniconda3/bin:$PATH"
-export LD_LIBRARY_PATH=$HOME/systemc-install/lib:$LD_LIBRARY_PATH
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/miniconda3/bin"
 
 # Disable automatic Conda initialization, but allow manual activation
 export CONDA_AUTO_ACTIVATE_BASE=false
 
 # Custom colors for the terminal prompt
-blk='\[\033[01;30m\]'   # Black
-red='\[\033[01;31m\]'   # Red
-grn='\[\033[01;32m\]'   # Green
-ylw='\[\033[01;33m\]'   # Yellow
-blu='\[\033[01;34m\]'   # Blue
-pur='\[\033[01;35m\]'   # Purple
-cyn='\[\033[01;36m\]'   # Cyan
-wht='\[\033[01;37m\]'   # White
-clr='\[\033[00m\]'      # Reset
+blk='\[\033[38;5;245m\]'  # Dark Gray
+red='\[\033[38;5;196m\]'  # Bright Red
+grn='\[\033[38;5;46m\]'   # Bright Green
+ylw='\[\033[38;5;226m\]'  # Bright Yellow
+blu='\[\033[38;5;39m\]'   # Bright Blue
+pur='\[\033[38;5;135m\]'  # Bright Purple
+cyn='\[\033[38;5;51m\]'   # Bright Cyan
+wht='\[\033[38;5;15m\]'   # Pure White
 
-force_color_prompt=yes
-
-export QSYS_ROOTDIR="/home/carburauto/intelFPGA_lite/23.1std/quartus/sopc_builder/bin"
-export CWPROOT='/home/carburauto/SeismicUnix'
-export PATH="${PATH}:${CWPROOT}/bin"
-export CWPROOT='/home/carburauto/SeismicUnix'
-export PATH="${PATH}:${CWPROOT}/bin"
-
+export CWPROOT="$HOME/SeismicUnix"
+export PATH="$PATH:$CWPROOT/bin"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
@@ -189,3 +180,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+. "$HOME/.cargo/env"
