@@ -1,54 +1,61 @@
 # .config/alacritty
 
+[env]
+TERM = "xterm-256color"
+
 [keyboard]
 bindings = [
 { key = "F11", action = "ToggleFullscreen" },
+{ key = "F12", action = "ToggleViMode" },
 ]
 
 [cursor]
-style = { shape = "Block", blinking = "on" }
+style = { shape = "Block", blinking = "Always" }
 
 [colors.bright]
-black = "0x282828"       # Dark Gray
-blue = "0x80a0ff"        # Neon Blue
-cyan = "0x8cf3f2"        # Neon Cyan
-green = "0x9cffb0"       # Pastel Green
-magenta = "0xff92df"     # Neon Pink
-red = "0xff6f6b"         # Bright Red
-white = "0xe0e0e0"       # Light Gray
-yellow = "0xffe08a"      # Soft Yellow
+black = "0x282828"
+blue = "0x80a0ff"
+cyan = "0x8cf3f2"
+green = "0x9cffb0"
+magenta = "0xff92df"
+red = "0xff6f6b"
+white = "0xe0e0e0"
+yellow = "0xffe08a"
 
 [colors.normal]
-black = "0x1a1a1a"       # Deep Dark Gray
-blue = "0x6c7dff"        # Soft Neon Blue
-cyan = "0x70e0e0"        # Soft Cyan
-green = "0x8cffab"       # Light Green
-magenta = "0xff85c5"     # Soft Pink
-red = "0xff5555"         # Vivid Red
-white = "0xb2b2b2"       # Medium Gray
-yellow = "0xffc978"      # Light Yellow
+black = "0x120F0F"
+blue = "0x6c7dff"
+cyan = "0x70e0e0"
+green = "0x8cffab"
+magenta = "0xff85c5"
+red = "0xff5555"
+white = "0xb2b2b2"
+yellow = "0xffc978"
 
 [colors.primary]
 background = "0x140D20"
-foreground = "0xF6E4CD"  # Soft Cream
+foreground = "0xF6E4CD"
+
+[colors.vi_mode_cursor]
+cursor = "0xb2b2b2"
 
 [font]
-size = 17
+size = 14
 
 [font.bold]
-family = "Terminess Nerd Font Mono"
+family = "AdwaitaMono Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "Terminess Nerd Font Mono"
+family = "AdwaitaMono Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Terminess Nerd Font Mono"
+family = "AdwaitaMono Nerd Font"
 style = "Regular"
 
 [mouse]
 hide_when_typing = true
 
 [window]
-opacity = 0.95
+opacity = 0.85
