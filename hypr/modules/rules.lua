@@ -135,7 +135,7 @@ hl.window_rule({
 
 hl.layer_rule({
 	match = {
-		namespace = "hyprlauncher",
+		namespace = "vicinae",
 	},
 	blur = true,
 	animation = "popin",

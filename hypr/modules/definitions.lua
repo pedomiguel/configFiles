@@ -6,26 +6,11 @@
 
 _G.terminal = "kitty"
 _G.fileManager = "thunar"
-_G.browser = "brave-browser"
+_G.browser = "brave"
 _G.powerManager = "wlogout"
-_G.menu = "hyprlauncher"
-_G.fileBrowser = "rofi -show recursivebrowser"
-_G.windowManager = "rofi -show window"
-_G.calculator = "rofi -show calc"
+_G.menu = "vicinae toggle"
 
 _G.mainMonitor = "eDP-1"
 _G.secondaryMonitor = "HDMI-A-1"
 
-hl.permission({
-	binary = "/usr/(bin|local/bin)/hyprpm",
-	type = "plugin",
-	mode = "allow",
-})
-
 -- See https://wiki.hyprland.org/Configuring/Environment-variables/
-
-hl.env("HYPRCURSOR_THEME", "BreezeX-RosePine-Linux")
-hl.env("XCURSOR_SIZE", 24)
-hl.env("HYPRCURSOR_SIZE", 24)
-hl.env("XDG_DATA_DIRS", "/usr/local/share:/usr/share")
---

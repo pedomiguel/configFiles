@@ -21,21 +21,13 @@ local menu = _G.menu
 local terminal = _G.terminal
 local browser = _G.browser
 local fileManager = _G.fileManager
-local fileBrowser = _G.fileBrowser
-local windowManager = _G.windowManager
-local calculator = _G.calculator
 local powerManager = _G.powerManager
 
 -- Just for master layout
 
 hl.bind(mainMod .. " + " .. "Space", hl.dsp.layout("swapwithmaster"))
 
--- Rofis
-
 hl.bind(mainMod .. " + Return", hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + F", hl.dsp.exec_cmd(fileBrowser))
-hl.bind(mainMod .. " + W", hl.dsp.exec_cmd(windowManager))
-hl.bind(mainMod .. " + C", hl.dsp.exec_cmd(calculator))
 
 hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(terminal))
 hl.bind(mainMod .. " + B", hl.dsp.exec_cmd(browser))
@@ -44,8 +36,9 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd(powerManager))
 
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind(mainMod .. " + S", hl.dsp.window.float())
-hl.bind(mainModShift .. " + S", hl.dsp.window.fullscreen())
 
+hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
+hl.bind(mainModShift .. " + F", hl.dsp.window.float({ action = "toggle" }))
 hl.bind("F11", hl.dsp.window.fullscreen())
 
 -- Move focus with mainMod + arrow keys
@@ -91,14 +84,10 @@ hl.bind(mainModShift .. " + 8", hl.dsp.window.move({ workspace = 8 }))
 hl.bind(mainModShift .. " + 9", hl.dsp.window.move({ workspace = 9 }))
 hl.bind(mainModShift .. " + 0", hl.dsp.window.move({ workspace = 10 }))
 
+hl.bind(mainMod .. " + Tab", hl.dsp.layout("cyclenext"))
+
 hl.bind("Print", hl.dsp.exec_cmd("hyprshot --clipboard-only -m region"))
 hl.bind("SHIFT" .. " + Print", hl.dsp.exec_cmd("hyprshot -m window"))
-
-hl.bind(mainMod .. " + G", hl.dsp.group.toggle())
-hl.bind(mainModShift .. " + G", hl.dsp.window.move({ out_of_group = true }))
-hl.bind(mainMod .. " + Tab", hl.dsp.group.next())
-hl.bind(mainModShift .. " + Tab", hl.dsp.group.next({ forward = false }))
-hl.bind(mainMod .. " + V", hl.dsp.exec_cmd("cliphist list| rofi -dmenu -display-columns 2| cliphist decode| wl-copy"))
 
 -- Move/resize windows with mainMod + LMB/RMB and dragging
 

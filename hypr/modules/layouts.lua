@@ -4,14 +4,14 @@ hl.config({
 	general = {
 		gaps_in = 5,
 		gaps_out = 10,
-		border_size = 1,
+		border_size = 0,
 		resize_on_border = true,
 		layout = "master",
 		allow_tearing = false,
-		col = {
-			active_border = { colors = { "rgba(00ff99ee)", "rgba(00ccffee)" }, angle = 45 },
-			inactive_border = "rgba(313131aa)",
-		},
+	},
+
+	debug = {
+		vfr = true,
 	},
 
 	decoration = {
